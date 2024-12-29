@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package tracking;
+
+service TrackingService {
+    rpc TrackOrder(TrackOrderRequest) returns (TrackingResponse);
+    rpc GetTrackingDetails(GetTrackingDetailsRequest) returns (TrackingResponse);
+}
+
+message TrackOrderRequest {
+    string order_id = 1;
+}
+
+message GetTrackingDetailsRequest {
+    string tracking_id = 1;
+}
+
+message TrackingResponse {
+    string tracking_id = 1;
+    string order_id = 2;
+    string status = 3;
+    string estimated_delivery = 4;
+}
